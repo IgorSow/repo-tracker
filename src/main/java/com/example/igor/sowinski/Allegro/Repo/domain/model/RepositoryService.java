@@ -1,12 +1,11 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -14,38 +13,46 @@ class RepositoryService {
 
 
     private RestTemplate restTemplate;
+    private String serverAddress;
 
-    @Value("${allegro.repository.address.url}")
-    private String serverAdress;
-
-
-    public RepositoryService() {
-
+    public RepositoryService(String serverAddress) {
         this.restTemplate = new RestTemplate();
+        this.serverAddress = serverAddress;
     }
 
-    public void setServerAdress(String serverAdress) {
-        this.serverAdress = serverAdress;
+    public void setServerAddress(String serverAddress) {
+        this.serverAddress = serverAddress;
     }
 
     protected List<Repository> getRepositoryList() {
 
         ResponseEntity<List<Repository>> response = restTemplate.exchange(
-                serverAdress,
+                serverAddress,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Repository>>() {
                 });
 
         List<Repository> repositoryList = response.getBody();
-        System.out.println(repositoryList);
         return repositoryList;
     }
 
-    public Repository getLatest() {
+    public List<Repository> orderListByUpdateDate(List<Repository> repositoryList) {
 
-        getRepositoryList();
-        return null;
+        Collections.sort(repositoryList, new RepoUpdateDateComparator());
+
+        return repositoryList;
     }
 
+    public Repository getLatestRepo(List<Repository> orderedRepositoryByDate){
+        return orderedRepositoryByDate.get(1);
+    }
+
+}
+
+class RepoUpdateDateComparator implements Comparator<Repository> {
+    @Override
+    public int compare(Repository repo1, Repository repo2) {
+        return repo1.getUpdated_at().compareTo(repo2.getUpdated_at());
+    }
 }

@@ -1,19 +1,14 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 public class RepositoryServiceTest {
 
-    private RepositoryService repositoryService = new RepositoryService();
+    private RepositoryService repositoryService = new RepositoryService("https://api.github.com/users/allegro/repos");
 
-    @Before
-    public void setDefaultRepositoryAddress(){
-        repositoryService.setServerAdress("https://api.github.com/users/allegro/repos");
-    }
 
     @Test
     public void shouldFetchAllegroRepositories() {
@@ -31,10 +26,25 @@ public class RepositoryServiceTest {
     @Test
     public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
         //given
+        List<Repository> repositoryList = repositoryService.getRepositoryList();
+        int compareLatestObject = 1;
+        int compareOlderrObject = -1;
+        int compareTheSameObject = 0;
 
         //when
+        List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
+
+        Repository lastRepository = orderedList.get(orderedList.size() -1);
+        Repository olderRepository = orderedList.get(1);
 
         //then
+
+        int resultCompare = lastRepository.getUpdated_at().compareTo(olderRepository.getUpdated_at());
+
+        Assert.assertEquals(compareLatestObject, resultCompare);
+        Assert.assertNotEquals(compareOlderrObject, resultCompare);
+        Assert.assertNotEquals(compareTheSameObject, resultCompare);
+
     }
 
 

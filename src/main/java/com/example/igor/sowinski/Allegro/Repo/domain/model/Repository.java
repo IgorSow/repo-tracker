@@ -75,11 +75,11 @@ class Repository {
     public String toString() {
         return "Repository{" +
                 "name='" + name + '\'' +
-                ", isPrivate=" + isPrivate +
-                ", created_at='" + created_at + '\'' +
+//                ", isPrivate=" + isPrivate +
+//                ", created_at='" + created_at + '\'' +
                 ", updated_at='" + updated_at + '\'' +
-                ", pushed_at='" + pushed_at + '\'' +
-                ", language='" + language + '\'' +
+//                ", pushed_at='" + pushed_at + '\'' +
+//                ", language='" + language + '\'' +
                 + '\'' +
                 + '\'' +
                 '}';
