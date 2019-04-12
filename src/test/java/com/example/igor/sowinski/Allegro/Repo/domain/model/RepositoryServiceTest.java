@@ -12,17 +12,6 @@ public class RepositoryServiceTest {
 
 
     @Test
-    public void shouldFetchAllegroRepositories() {
-
-        //given
-        //when
-        List<Repository> repositoryList = infrastructure.getRepositoryList();
-
-        //then
-        Assert.assertNotEquals(0, repositoryList.size());
-    }
-
-    @Test
     public void shouldReturnOrderedListByDateUpdate(){
         //given
         List<Repository> repositoryList = infrastructure.getRepositoryList();
