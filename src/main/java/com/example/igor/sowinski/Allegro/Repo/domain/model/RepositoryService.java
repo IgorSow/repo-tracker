@@ -24,7 +24,7 @@ class RepositoryService {
         this.serverAddress = serverAddress;
     }
 
-    protected List<Repository> getRepositoryList() {
+    List<Repository> getRepositoryList() {
 
         ResponseEntity<List<Repository>> response = restTemplate.exchange(
                 serverAddress,
@@ -37,15 +37,15 @@ class RepositoryService {
         return repositoryList;
     }
 
-    public List<Repository> orderListByUpdateDate(List<Repository> repositoryList) {
+    List<Repository> orderListByUpdateDate(List<Repository> repositoryList) {
 
         Collections.sort(repositoryList, new RepoUpdateDateComparator());
 
         return repositoryList;
     }
 
-    public Repository getLatestRepo(List<Repository> orderedRepositoryByDate){
-        return orderedRepositoryByDate.get(1);
+    Repository getLatestRepo(List<Repository> orderedRepositoryByDate){
+        return orderedRepositoryByDate.get(orderedRepositoryByDate.size() -1);
     }
 
 }

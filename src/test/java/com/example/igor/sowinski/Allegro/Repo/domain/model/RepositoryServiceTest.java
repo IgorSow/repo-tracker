@@ -13,22 +13,20 @@ public class RepositoryServiceTest {
     @Test
     public void shouldFetchAllegroRepositories() {
 
-
         //given
         //when
         List<Repository> repositoryList = repositoryService.getRepositoryList();
 
         //then
-
         Assert.assertNotEquals(0, repositoryList.size());
     }
 
     @Test
-    public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
+    public void shouldReturnOrderedListByDateUpdate(){
         //given
         List<Repository> repositoryList = repositoryService.getRepositoryList();
         int compareLatestObject = 1;
-        int compareOlderrObject = -1;
+        int compareOlderObject = -1;
         int compareTheSameObject = 0;
 
         //when
@@ -42,11 +40,26 @@ public class RepositoryServiceTest {
         int resultCompare = lastRepository.getUpdated_at().compareTo(olderRepository.getUpdated_at());
 
         Assert.assertEquals(compareLatestObject, resultCompare);
-        Assert.assertNotEquals(compareOlderrObject, resultCompare);
+        Assert.assertNotEquals(compareOlderObject, resultCompare);
         Assert.assertNotEquals(compareTheSameObject, resultCompare);
 
     }
 
+    @Test
+    public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
 
+        //given
+        List<Repository> repositoryList = repositoryService.getRepositoryList();
+
+        //when
+        List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
+
+        Repository lastObject = orderedList.get(orderedList.size() -1);
+
+        Repository latestRepo = repositoryService.getLatestRepo(orderedList);
+
+        //then
+        Assert.assertEquals(lastObject, latestRepo);
+    }
 
 }
