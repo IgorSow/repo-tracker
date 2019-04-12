@@ -1,7 +1,8 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
 import com.example.igor.sowinski.Allegro.Repo.api.dto.RepositoryNameDto;
-import org.springframework.beans.factory.annotation.Value;
+
+import java.util.List;
 
 public class RepositoryFacade {
 
@@ -14,9 +15,19 @@ public class RepositoryFacade {
     }
 
     public RepositoryNameDto getLatestRepo(){
-//        Repository latestRepo = service.orderListByUpdateDate();
-//
-//        RepositoryNameDto result = new RepositoryNameDto(latestRepo.getName());
-        return null;
+        List<Repository> repositoryList = service.getRepositoryList();
+
+        List<Repository> orderListByUpdateDate = service.orderListByUpdateDate(repositoryList);
+
+        Repository result = service.getLatestRepo(orderListByUpdateDate);
+
+        return RepositoryMapper.getDto(result);
+    }
+}
+
+class RepositoryMapper{
+
+    static RepositoryNameDto getDto(Repository repository){
+       return new RepositoryNameDto(repository.getName());
     }
 }
