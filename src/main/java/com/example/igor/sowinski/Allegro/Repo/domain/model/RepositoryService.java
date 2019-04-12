@@ -38,6 +38,7 @@ class RepositoryService {
                 });
 
         List<Repository> repositoryList = response.getBody();
+        System.out.println(repositoryList);
         return repositoryList;
     }
 

@@ -28,6 +28,15 @@ public class RepositoryServiceTest {
         Assert.assertNotEquals(0, repositoryList.size());
     }
 
+    @Test
+    public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
+        //given
+
+        //when
+
+        //then
+    }
+
 
 
 }
