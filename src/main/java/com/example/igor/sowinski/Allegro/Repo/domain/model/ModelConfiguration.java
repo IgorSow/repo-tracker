@@ -13,13 +13,18 @@ public class ModelConfiguration {
     private String serverAddress;
 
     @Bean
-    RepositoryService repositoryService (){
-        return new RepositoryService(serverAddress);
+    RepositoryService service(){
+        return new RepositoryService();
     }
 
     @Bean
-    RepositoryFacade repositoryFacade(RepositoryService repositoryService){
-        return new RepositoryFacade(repositoryService);
+    RepositoryInfrastructure infrastructure(){
+        return new RepositoryInfrastructure(serverAddress);
+    }
+
+    @Bean
+    RepositoryFacade repositoryFacade(RepositoryService repositoryService, RepositoryInfrastructure infrastructure){
+        return new RepositoryFacade(repositoryService, infrastructure);
     }
 
 

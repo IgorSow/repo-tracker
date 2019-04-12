@@ -1,9 +1,5 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -11,30 +7,8 @@ import java.util.List;
 
 class RepositoryService {
 
+    public RepositoryService() {
 
-    private RestTemplate restTemplate;
-    private String serverAddress;
-
-    public RepositoryService(String serverAddress) {
-        this.restTemplate = new RestTemplate();
-        this.serverAddress = serverAddress;
-    }
-
-    public void setServerAddress(String serverAddress) {
-        this.serverAddress = serverAddress;
-    }
-
-    List<Repository> getRepositoryList() {
-
-        ResponseEntity<List<Repository>> response = restTemplate.exchange(
-                serverAddress,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Repository>>() {
-                });
-
-        List<Repository> repositoryList = response.getBody();
-        return repositoryList;
     }
 
     List<Repository> orderListByUpdateDate(List<Repository> repositoryList) {

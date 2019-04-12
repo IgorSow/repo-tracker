@@ -9,13 +9,15 @@ public class RepositoryFacade {
 
 
     private RepositoryService service;
+    private RepositoryInfrastructure infrastructure;
 
-    public RepositoryFacade(RepositoryService repositoryService) {
+    public RepositoryFacade(RepositoryService repositoryService, RepositoryInfrastructure infrastructure) {
         this.service = repositoryService;
+        this.infrastructure = infrastructure;
     }
 
     public RepositoryNameDto getLatestRepo(){
-        List<Repository> repositoryList = service.getRepositoryList();
+        List<Repository> repositoryList = infrastructure.getRepositoryList();
 
         List<Repository> orderListByUpdateDate = service.orderListByUpdateDate(repositoryList);
 

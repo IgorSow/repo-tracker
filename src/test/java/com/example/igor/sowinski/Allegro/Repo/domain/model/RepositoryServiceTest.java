@@ -7,7 +7,8 @@ import java.util.List;
 
 public class RepositoryServiceTest {
 
-    private RepositoryService repositoryService = new RepositoryService("https://api.github.com/users/allegro/repos");
+    private RepositoryService repositoryService = new RepositoryService();
+    private RepositoryInfrastructure infrastructure = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
 
 
     @Test
@@ -15,7 +16,7 @@ public class RepositoryServiceTest {
 
         //given
         //when
-        List<Repository> repositoryList = repositoryService.getRepositoryList();
+        List<Repository> repositoryList = infrastructure.getRepositoryList();
 
         //then
         Assert.assertNotEquals(0, repositoryList.size());
@@ -24,7 +25,7 @@ public class RepositoryServiceTest {
     @Test
     public void shouldReturnOrderedListByDateUpdate(){
         //given
-        List<Repository> repositoryList = repositoryService.getRepositoryList();
+        List<Repository> repositoryList = infrastructure.getRepositoryList();
         int compareLatestObject = 1;
         int compareOlderObject = -1;
         int compareTheSameObject = 0;
@@ -49,7 +50,7 @@ public class RepositoryServiceTest {
     public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
 
         //given
-        List<Repository> repositoryList = repositoryService.getRepositoryList();
+        List<Repository> repositoryList = infrastructure.getRepositoryList();
 
         //when
         List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);

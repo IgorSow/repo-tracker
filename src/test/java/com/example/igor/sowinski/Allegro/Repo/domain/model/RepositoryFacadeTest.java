@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class RepositoryFacadeTest {
 
 
@@ -16,10 +14,11 @@ public class RepositoryFacadeTest {
     @Test
     public void shouldReturnLatestRepositoryNameDto() {
         //given
-        RepositoryService repositoryService = new RepositoryService("https://api.github.com/users/IgorSow/repos");
-        RepositoryFacade repositoryFacade = new RepositoryFacade(repositoryService);
+        RepositoryService repositoryService = new RepositoryService();
+        RepositoryInfrastructure infrastructure = new RepositoryInfrastructure("https://api.github.com/users/IgorSow/repos");
+        RepositoryFacade repositoryFacade = new RepositoryFacade(repositoryService, infrastructure);
 
-        List<Repository> repositoryList = repositoryService.getRepositoryList();
+        List<Repository> repositoryList = infrastructure.getRepositoryList();
         List<Repository> orderListByUpdateDate = repositoryService.orderListByUpdateDate(repositoryList);
         Repository latestRepo = repositoryService.getLatestRepo(orderListByUpdateDate);
 
