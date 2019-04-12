@@ -13,7 +13,7 @@ public class RepositoryFacade {
     }
 
     public RepositoryNameDto getLatestRepo(){
-        Repository lasterRepo = service.getLasterRepo();
+        Repository lasterRepo = service.getLatest();
 
         RepositoryNameDto result = new RepositoryNameDto(lasterRepo.getName());
         return result;

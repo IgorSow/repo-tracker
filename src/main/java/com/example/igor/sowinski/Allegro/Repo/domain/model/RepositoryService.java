@@ -24,8 +24,11 @@ class RepositoryService {
         this.restTemplate = new RestTemplate();
     }
 
+    public void setServerAdress(String serverAdress) {
+        this.serverAdress = serverAdress;
+    }
 
-    private List<Repository> getRepositoryList() {
+    protected List<Repository> getRepositoryList() {
 
         ResponseEntity<List<Repository>> response = restTemplate.exchange(
                 serverAdress,
@@ -34,12 +37,11 @@ class RepositoryService {
                 new ParameterizedTypeReference<List<Repository>>() {
                 });
 
-        List<Repository> lisy = response.getBody();
-        System.out.println(lisy);
-        return lisy;
+        List<Repository> repositoryList = response.getBody();
+        return repositoryList;
     }
 
-    public Repository getLasterRepo() {
+    public Repository getLatest() {
 
         getRepositoryList();
         return null;

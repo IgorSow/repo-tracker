@@ -23,10 +23,10 @@ class RepositoryController {
     public ResponseEntity getLasted() {
 
 
-        RepositoryNameDto repositoryList = facade.getLatestRepo();
+        RepositoryNameDto repositoryNameDto = facade.getLatestRepo();
 
 
-        return new ResponseEntity(repositoryList, HttpStatus.OK);
+        return new ResponseEntity(repositoryNameDto, HttpStatus.OK);
 
     }
 }
