@@ -70,19 +70,5 @@ class Repository {
     public void setLanguage(String language) {
         this.language = language;
     }
-
-    @Override
-    public String toString() {
-        return "Repository{" +
-                "name='" + name + '\'' +
-//                ", isPrivate=" + isPrivate +
-//                ", created_at='" + created_at + '\'' +
-                ", updated_at='" + updated_at + '\'' +
-//                ", pushed_at='" + pushed_at + '\'' +
-//                ", language='" + language + '\'' +
-                + '\'' +
-                + '\'' +
-                '}';
-    }
 }
 

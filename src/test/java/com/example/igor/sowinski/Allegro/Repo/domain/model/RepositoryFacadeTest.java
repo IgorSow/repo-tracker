@@ -8,9 +8,6 @@ import java.util.List;
 
 public class RepositoryFacadeTest {
 
-
-
-
     @Test
     public void shouldReturnLatestRepositoryNameDto() {
         //given
@@ -22,14 +19,10 @@ public class RepositoryFacadeTest {
         List<Repository> orderListByUpdateDate = repositoryService.orderListByUpdateDate(repositoryList);
         Repository latestRepo = repositoryService.getLatestRepo(orderListByUpdateDate);
 
-
         //when
-
         RepositoryNameDto latestRepoDto = repositoryFacade.getLatestRepo();
+
         //then
-
         Assert.assertEquals(latestRepo.getName(), latestRepoDto.getNameRepository());
-
-
     }
 }

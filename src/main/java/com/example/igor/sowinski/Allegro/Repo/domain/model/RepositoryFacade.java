@@ -6,8 +6,6 @@ import java.util.List;
 
 public class RepositoryFacade {
 
-
-
     private RepositoryService service;
     private RepositoryInfrastructure infrastructure;
 
@@ -28,7 +26,6 @@ public class RepositoryFacade {
 }
 
 class RepositoryMapper{
-
     static RepositoryNameDto getDto(Repository repository){
        return new RepositoryNameDto(repository.getName());
     }

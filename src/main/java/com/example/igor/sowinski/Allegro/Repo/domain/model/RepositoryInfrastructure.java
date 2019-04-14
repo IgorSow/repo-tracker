@@ -1,9 +1,11 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
+import com.example.igor.sowinski.Allegro.Repo.domain.exceptions.RepositoryIsEmpty;
 import com.example.igor.sowinski.Allegro.Repo.domain.exceptions.RepositoryNotExisting;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -31,10 +33,16 @@ public class RepositoryInfrastructure {
                     });
 
             List<Repository> repositoryList = response.getBody();
+            checkIsEmpty(repositoryList);
             return repositoryList;
-        } catch (Throwable e ) {
+        } catch (HttpClientErrorException e ) {
             e.printStackTrace();
             throw new RepositoryNotExisting(e.getMessage());
+        }
+    }
+    private void checkIsEmpty(List<Repository> list){
+        if(list.isEmpty()){
+            throw new RepositoryIsEmpty("Account have no repositories");
         }
     }
 }

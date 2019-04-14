@@ -2,7 +2,6 @@ package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -11,10 +10,7 @@ import java.util.List;
 public class RepositoryServiceTest {
 
     private RepositoryService repositoryService = new RepositoryService();
-
     private RepositoryInfrastructure accountContainMinTwoRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
-    private RepositoryInfrastructure notExistingRepository = new RepositoryInfrastructure("https://api.github.com/users/fasdfasdvqwfwqvzzasdw/repos");
-
 
     @Test
     public void shouldSortListDescending(){
@@ -29,12 +25,11 @@ public class RepositoryServiceTest {
         repositoryList.add(repo2);
         repositoryList.add(repo3);
         repositoryList.add(repo4);
-        //when
 
+        //when
         List<Repository> orderListByUpdateDate = this.repositoryService.orderListByUpdateDate(repositoryList);
 
         //then
-
         Assert.assertEquals(repo4, orderListByUpdateDate.get(3));
         Assert.assertEquals(repo3, orderListByUpdateDate.get(0));
         Assert.assertEquals(repo1, orderListByUpdateDate.get(1));
@@ -50,18 +45,15 @@ public class RepositoryServiceTest {
 
         //when
         List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
-
         Repository lastRepository = orderedList.get(orderedList.size() -1);
         Repository olderRepository = orderedList.get(1);
 
         //then
-
         int resultCompare = lastRepository.getUpdated_at().compareTo(olderRepository.getUpdated_at());
 
         Assert.assertEquals(compareLatestObject, resultCompare);
         Assert.assertNotEquals(compareOlderObject, resultCompare);
         Assert.assertNotEquals(compareTheSameObject, resultCompare);
-
     }
 
     @Test
@@ -72,9 +64,7 @@ public class RepositoryServiceTest {
 
         //when
         List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
-
         Repository lastObject = orderedList.get(orderedList.size() -1);
-
         Repository latestRepo = repositoryService.getLatestRepo(orderedList);
 
         //then
@@ -87,12 +77,11 @@ public class RepositoryServiceTest {
         Repository repo1= new Repository("repo1", false, Instant.now(), Instant.now().plus(2, ChronoUnit.MINUTES), Instant.now(), "JAVA");
         List<Repository> repositoryList = new ArrayList<>();
         repositoryList.add(repo1);
+
         //when
         List<Repository> orderListByUpdateDate = this.repositoryService.orderListByUpdateDate(repositoryList);
-        //then
 
+        //then
         Assert.assertEquals(repo1, orderListByUpdateDate.get(0));
     }
-
-
 }
