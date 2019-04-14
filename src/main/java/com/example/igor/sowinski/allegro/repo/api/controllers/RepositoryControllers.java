@@ -23,29 +23,28 @@ public class RepositoryControllers {
 
     @GetMapping("/allegro-last-updated-repository")
     public ResponseEntity<RepositoryNameDto> getLasted() {
-        RepositoryNameDto repositoryNameDto = null;
-//        try {
-            repositoryNameDto = facade.getLatestRepo();
-//        } catch (RepositoryNotExisting repositoryNotExisting) {
-//            repositoryNotExisting.printStackTrace();
-//            logger.error("REST CONTROLLER RepositoryControllers()- result: " + repositoryNotExisting.getMessage());
-//            return new ResponseEntity("Repository not existing", HttpStatus.NOT_FOUND);
-//        } catch (RepositoryIsEmpty repositoryIsEmpty) {
-//            repositoryIsEmpty.printStackTrace();
-//            logger.error("REST CONTROLLER RepositoryControllers()- result: " + repositoryIsEmpty.getMessage());
-//            return new ResponseEntity("Repository is empty", HttpStatus.NOT_FOUND);
-//        } catch (Exception e){
-//            logger.error("REST CONTROLLER RepositoryControllers()- result: " + e.getMessage());
-//            return new ResponseEntity("Unexpected error", HttpStatus.NOT_FOUND);
-//        }
+        RepositoryNameDto repositoryNameDto = facade.getLatestRepo();
+
         logger.info("REST CONTROLLER RepositoryControllers()- result: " + repositoryNameDto);
         return new ResponseEntity(repositoryNameDto, HttpStatus.OK);
     }
 
     @ExceptionHandler({RepositoryIsEmpty.class})
-    private ResponseEntity<RepositoryNameDto> repositoryNotExisting(RepositoryIsEmpty e){
+    private ResponseEntity<RepositoryNameDto> repositoryIsEmpty(RepositoryIsEmpty e){
         e.printStackTrace();
+        logger.error("REST CONTROLLER repositoryIsEmpty- result: " + e.getMessage());
+        return new ResponseEntity("Repository is empty", HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler({RepositoryNotExisting.class})
+    private ResponseEntity<RepositoryNameDto> repositoryNotExisting(RepositoryNotExisting repositoryNotExisting) {
+        repositoryNotExisting.printStackTrace();
+        logger.error("REST CONTROLLER repositoryNotExisting()- result: " + repositoryNotExisting.getMessage());
+        return new ResponseEntity("Repository not existing", HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler({Exception.class})
+    private ResponseEntity<RepositoryNameDto> unExpectedError(Exception e){
         logger.error("REST CONTROLLER RepositoryControllers()- result: " + e.getMessage());
-        return new ResponseEntity("Repository not existing", HttpStatus.CONFLICT);
+        return new ResponseEntity("Unexpected error", HttpStatus.NOT_FOUND);
     }
 }
