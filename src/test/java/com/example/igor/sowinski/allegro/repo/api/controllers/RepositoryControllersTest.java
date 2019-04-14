@@ -2,10 +2,13 @@ package com.example.igor.sowinski.allegro.repo.api.controllers;
 
 import com.example.igor.sowinski.allegro.repo.AllegroRepoApplication;
 import com.example.igor.sowinski.allegro.repo.api.dto.RepositoryNameDto;
+import com.example.igor.sowinski.allegro.repo.domain.model.RepositoryFacadeTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -22,6 +25,8 @@ public class RepositoryControllersTest {
 
     private String ENDPOINT = "/allegro-last-updated-repository";
 
+    private Logger logger = LoggerFactory.getLogger(RepositoryControllersTest.class);
+
     @Before
     public void runApplication() {
         AllegroRepoApplication.main(new String[]{});
@@ -36,6 +41,7 @@ public class RepositoryControllersTest {
         RepositoryNameDto repositoryNameDto = entity.getBody();
 
         //then
+        logger.info("TEST shouldReturnEntityFromServer()- result: " + repositoryNameDto.getNameRepository());
         Assert.assertNotNull(repositoryNameDto.getNameRepository());
     }
 }

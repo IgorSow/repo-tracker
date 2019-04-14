@@ -2,6 +2,9 @@ package com.example.igor.sowinski.allegro.repo.domain.model;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -9,6 +12,7 @@ import java.util.List;
 
 public class RepositoryServiceTest {
 
+    private Logger logger = LoggerFactory.getLogger(RepositoryServiceTest.class);
     private RepositoryService repositoryService = new RepositoryService();
     private RepositoryInfrastructure accountContainMinTwoRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
 
@@ -30,11 +34,17 @@ public class RepositoryServiceTest {
         List<Repository> orderListByUpdateDate = this.repositoryService.orderListByUpdateDate(repositoryList);
 
         //then
+        repositoryList.stream()
+                .forEach((repository -> logger.info("TEST shouldSortListDescending()- " +
+                        "result: Name:" + repository.getName() +
+                        "last update:" + repository.getUpdated_at())));
+
         Assert.assertEquals(repo4, orderListByUpdateDate.get(3));
         Assert.assertEquals(repo3, orderListByUpdateDate.get(0));
         Assert.assertEquals(repo1, orderListByUpdateDate.get(1));
         Assert.assertEquals(repo2, orderListByUpdateDate.get(2));
     }
+
     @Test
     public void shouldReturnOrderedListByDateUpdate(){
         //given
@@ -51,6 +61,7 @@ public class RepositoryServiceTest {
         //then
         int resultCompare = lastRepository.getUpdated_at().compareTo(olderRepository.getUpdated_at());
 
+        logger.info("TEST shouldReturnOrderedListByDateUpdate() - result: " + resultCompare);
         Assert.assertEquals(compareLatestObject, resultCompare);
         Assert.assertNotEquals(compareOlderObject, resultCompare);
         Assert.assertNotEquals(compareTheSameObject, resultCompare);
@@ -64,11 +75,19 @@ public class RepositoryServiceTest {
 
         //when
         List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
-        Repository lastObject = orderedList.get(orderedList.size() -1);
-        Repository latestRepo = repositoryService.getLatestRepo(orderedList);
+        Repository lastOrder = orderedList.get(orderedList.size() -1);
+        Repository lastFromService = repositoryService.getLatestRepo(orderedList);
 
         //then
-        Assert.assertEquals(lastObject, latestRepo);
+        logger.info("TEST shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit()- " +
+                "result: Name:" + lastOrder.getName() +
+                " Last update:" + lastOrder.getUpdated_at());
+
+        logger.info("TEST shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit()- " +
+                "result: Name:" + lastFromService.getName() +
+                " Last update:" + lastFromService.getUpdated_at());
+
+        Assert.assertEquals(lastOrder, lastFromService);
     }
     
     @Test
@@ -82,6 +101,14 @@ public class RepositoryServiceTest {
         List<Repository> orderListByUpdateDate = this.repositoryService.orderListByUpdateDate(repositoryList);
 
         //then
+        logger.info("TEST shouldSortIfExistingOnlyOneRepository()- " +
+                "result: Name:" + repo1.getName() +
+                " Last update:" + repo1.getUpdated_at());
+
+        logger.info("TEST shouldSortIfExistingOnlyOneRepository()- " +
+                "result: Name:" + orderListByUpdateDate.get(0).getName() +
+                " Last update:" + orderListByUpdateDate.get(0).getUpdated_at());
+
         Assert.assertEquals(repo1, orderListByUpdateDate.get(0));
     }
 }

@@ -13,4 +13,6 @@ public class AllegroRepoApplicationTests {
 	public void contextLoads() {
 	}
 
+
+
 }
