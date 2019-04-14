@@ -1,7 +1,7 @@
-package com.example.igor.sowinski.Allegro.Repo.domain.model;
+package com.example.igor.sowinski.allegro.repo.domain.model;
 
-import com.example.igor.sowinski.Allegro.Repo.domain.exceptions.RepositoryIsEmpty;
-import com.example.igor.sowinski.Allegro.Repo.domain.exceptions.RepositoryNotExisting;
+import com.example.igor.sowinski.allegro.repo.domain.exceptions.RepositoryIsEmpty;
+import com.example.igor.sowinski.allegro.repo.domain.exceptions.RepositoryNotExisting;
 import org.junit.Assert;
 import org.junit.Test;
 

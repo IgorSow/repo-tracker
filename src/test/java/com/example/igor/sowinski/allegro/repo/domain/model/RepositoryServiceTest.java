@@ -1,4 +1,4 @@
-package com.example.igor.sowinski.Allegro.Repo.domain.model;
+package com.example.igor.sowinski.allegro.repo.domain.model;
 
 import org.junit.Assert;
 import org.junit.Test;

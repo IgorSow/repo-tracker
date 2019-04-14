@@ -3,7 +3,7 @@
 [1m--- a/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/ModelConfiguration.java[m
 [1m+++ b/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/ModelConfiguration.java[m
 [36m@@ -1,6 +1,7 @@[m
- package com.example.igor.sowinski.Allegro.Repo.domain.model;[m
+ package com.example.igor.sowinski.allegro.repo.domain.model;[m
  [m
  [m
 [32m+[m[32mimport org.springframework.beans.factory.annotation.Value;[m
@@ -49,9 +49,9 @@
 [1m--- a/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryFacade.java[m
 [1m+++ b/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryFacade.java[m
 [36m@@ -1,6 +1,7 @@[m
- package com.example.igor.sowinski.Allegro.Repo.domain.model;[m
+ package com.example.igor.sowinski.allegro.repo.domain.model;[m
  [m
- import com.example.igor.sowinski.Allegro.Repo.api.dto.RepositoryNameDto;[m
+ import com.example.igor.sowinski.allegro.repo.api.dto.RepositoryNameDto;[m
 [32m+[m[32mimport org.springframework.beans.factory.annotation.Value;[m
  [m
  public class RepositoryFacade {[m
@@ -75,7 +75,7 @@
 [1m--- a/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryService.java[m
 [1m+++ b/src/main/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryService.java[m
 [36m@@ -1,12 +1,11 @@[m
- package com.example.igor.sowinski.Allegro.Repo.domain.model;[m
+ package com.example.igor.sowinski.allegro.repo.domain.model;[m
  [m
 [31m-[m
 [31m-import org.springframework.beans.factory.annotation.Value;[m
@@ -154,7 +154,7 @@
 [1m--- a/src/test/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryServiceTest.java[m
 [1m+++ b/src/test/java/com/example/igor/sowinski/Allegro/Repo/domain/model/RepositoryServiceTest.java[m
 [36m@@ -1,19 +1,14 @@[m
- package com.example.igor.sowinski.Allegro.Repo.domain.model;[m
+ package com.example.igor.sowinski.allegro.repo.domain.model;[m
  [m
  import org.junit.Assert;[m
 [31m-import org.junit.Before;[m

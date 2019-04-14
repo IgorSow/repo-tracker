@@ -1,4 +1,4 @@
-package com.example.igor.sowinski.Allegro.Repo.api.dto;
+package com.example.igor.sowinski.allegro.repo.api.dto;
 
 public class RepositoryNameDto {
 

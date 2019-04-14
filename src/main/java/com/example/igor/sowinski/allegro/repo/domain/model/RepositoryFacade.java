@@ -1,6 +1,6 @@
-package com.example.igor.sowinski.Allegro.Repo.domain.model;
+package com.example.igor.sowinski.allegro.repo.domain.model;
 
-import com.example.igor.sowinski.Allegro.Repo.api.dto.RepositoryNameDto;
+import com.example.igor.sowinski.allegro.repo.api.dto.RepositoryNameDto;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.igor.sowinski.Allegro.Repo;
+package com.example.igor.sowinski.allegro.repo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
