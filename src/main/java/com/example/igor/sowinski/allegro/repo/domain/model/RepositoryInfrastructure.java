@@ -22,7 +22,7 @@ public class RepositoryInfrastructure {
         this.restTemplate = new RestTemplate();
     }
 
-    List<Repository> getRepositoryList() {
+    List<Repository> getRepositoryList() throws RepositoryNotExisting, RepositoryIsEmpty {
 
         try {
             ResponseEntity<List<Repository>> response = restTemplate.exchange(

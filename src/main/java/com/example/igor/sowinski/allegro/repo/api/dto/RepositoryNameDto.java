@@ -8,6 +8,8 @@ public class RepositoryNameDto {
     public RepositoryNameDto(String nameRepository) {
         this.nameRepository = nameRepository;
     }
+    public RepositoryNameDto() {
+    }
 
     public String getNameRepository() {
         return nameRepository;
@@ -16,4 +18,8 @@ public class RepositoryNameDto {
     public void setNameRepository(String nameRepository) {
         this.nameRepository = nameRepository;
     }
+
+
+
+
 }
