@@ -40,4 +40,11 @@ public class RepositoryControllers {
         logger.info("REST CONTROLLER RepositoryControllers()- result: " + repositoryNameDto);
         return new ResponseEntity(repositoryNameDto, HttpStatus.OK);
     }
+    //    @ExceptionHandler(RepositoryNotExisting.class)
+//    public ResponseEntity<RepositoryNameDto>  repositoryNotExisting(RepositoryIsEmpty e){
+//        e.printStackTrace();
+//        logger.error("REST CONTROLLER RepositoryControllers()- result: " + repositoryNotExisting.getMessage());
+//        return new ResponseEntity("Repository not existing", HttpStatus.NOT_FOUND);
+//
+//    }
 }
