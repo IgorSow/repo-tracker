@@ -9,18 +9,11 @@ class RepositoryService {
     public RepositoryService() {
     }
     List<Repository> orderListByUpdateDate(List<Repository> repositoryList) {
-        Collections.sort(repositoryList, new RepoUpdateDateComparator());
+        Collections.sort(repositoryList, Comparator.comparing(Repository::getUpdated_at));
         return repositoryList;
     }
 
     Repository getLatestRepo(List<Repository> orderedRepositoryByDate){
         return orderedRepositoryByDate.get(orderedRepositoryByDate.size() -1);
-    }
-}
-
-class RepoUpdateDateComparator implements Comparator<Repository> {
-    @Override
-    public int compare(Repository repo1, Repository repo2) {
-        return repo1.getUpdated_at().compareTo(repo2.getUpdated_at());
     }
 }
