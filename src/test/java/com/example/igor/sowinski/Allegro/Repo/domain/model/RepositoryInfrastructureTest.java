@@ -9,7 +9,6 @@ import java.util.List;
 public class RepositoryInfrastructureTest {
 
     private RepositoryInfrastructure infrastructure = new RepositoryInfrastructure("https://api.github.com/users/IgorSow/repos");
-    private RepositoryInfrastructure excistingEmptyRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
 
     @Test
     public void shouldFetchAllegroRepositories() {
@@ -32,7 +31,6 @@ public class RepositoryInfrastructureTest {
             //then
             Assert.assertTrue(false);
         } catch (RepositoryNotExisting e) {
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
            Assert.assertTrue(true);
         }
     }

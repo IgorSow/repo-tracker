@@ -12,9 +12,8 @@ public class RepositoryServiceTest {
 
     private RepositoryService repositoryService = new RepositoryService();
 
-    private RepositoryInfrastructure repoContainMinTwoRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
-    private RepositoryInfrastructure notExcistingRepository = new RepositoryInfrastructure("https://api.github.com/users/fasdfasdvqwfwqvzzasdw/repos");
-    private RepositoryInfrastructure excistingEmptyRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
+    private RepositoryInfrastructure accountContainMinTwoRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
+    private RepositoryInfrastructure notExistingRepository = new RepositoryInfrastructure("https://api.github.com/users/fasdfasdvqwfwqvzzasdw/repos");
 
 
     @Test
@@ -44,7 +43,7 @@ public class RepositoryServiceTest {
     @Test
     public void shouldReturnOrderedListByDateUpdate(){
         //given
-        List<Repository> repositoryList = repoContainMinTwoRepository.getRepositoryList();
+        List<Repository> repositoryList = accountContainMinTwoRepository.getRepositoryList();
         int compareLatestObject = 1;
         int compareOlderObject = -1;
         int compareTheSameObject = 0;
@@ -69,7 +68,7 @@ public class RepositoryServiceTest {
     public void shouldReturnRepositoryWhereIsTheLatestUpdateDateCommit(){
 
         //given
-        List<Repository> repositoryList = repoContainMinTwoRepository.getRepositoryList();
+        List<Repository> repositoryList = accountContainMinTwoRepository.getRepositoryList();
 
         //when
         List<Repository> orderedList = repositoryService.orderListByUpdateDate(repositoryList);
@@ -81,5 +80,19 @@ public class RepositoryServiceTest {
         //then
         Assert.assertEquals(lastObject, latestRepo);
     }
+    
+    @Test
+    public void shouldSortIfExistingOnlyOneRepository(){
+        //given
+        Repository repo1= new Repository("repo1", false, Instant.now(), Instant.now().plus(2, ChronoUnit.MINUTES), Instant.now(), "JAVA");
+        List<Repository> repositoryList = new ArrayList<>();
+        repositoryList.add(repo1);
+        //when
+        List<Repository> orderListByUpdateDate = this.repositoryService.orderListByUpdateDate(repositoryList);
+        //then
+
+        Assert.assertEquals(repo1, orderListByUpdateDate.get(0));
+    }
+
 
 }
