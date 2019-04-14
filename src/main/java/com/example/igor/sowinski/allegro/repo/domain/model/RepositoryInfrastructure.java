@@ -35,7 +35,7 @@ public class RepositoryInfrastructure {
 
             List<Repository> repositoryList = response.getBody();
             checkIsEmpty(repositoryList);
-            logger.error("INFRASTRUCTURE getRepositoryList()- result: Fetch size: " + repositoryList.size());
+            logger.info("INFRASTRUCTURE getRepositoryList()- result: Fetch size: " + repositoryList.size());
             return repositoryList;
         } catch (HttpClientErrorException e ) {
             e.printStackTrace();
