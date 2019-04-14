@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 public class RepositoryInfrastructureTest {
 
     private RepositoryInfrastructure infrastructure = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
+    private RepositoryInfrastructure notExcistingRepository = new RepositoryInfrastructure("https://api.github.com/users/fasdfasdvqwfwqvzzasdw/repos");
+    private RepositoryInfrastructure excistingEmptyRepository = new RepositoryInfrastructure("https://api.github.com/users/allegro/repos");
 
     @Test
     public void shouldFetchAllegroRepositories() {
