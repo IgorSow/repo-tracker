@@ -1,5 +1,6 @@
 package com.example.igor.sowinski.Allegro.Repo.domain.model;
 
+import com.example.igor.sowinski.Allegro.Repo.domain.exceptions.RepositoryNotExisting;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -21,14 +22,19 @@ public class RepositoryInfrastructure {
 
     List<Repository> getRepositoryList() {
 
-        ResponseEntity<List<Repository>> response = restTemplate.exchange(
-                serverAddress,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<Repository>>() {
-                });
+        try {
+            ResponseEntity<List<Repository>> response = restTemplate.exchange(
+                    serverAddress,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<Repository>>() {
+                    });
 
-        List<Repository> repositoryList = response.getBody();
-        return repositoryList;
+            List<Repository> repositoryList = response.getBody();
+            return repositoryList;
+        } catch (Throwable e ) {
+            e.printStackTrace();
+            throw new RepositoryNotExisting(e.getMessage());
+        }
     }
 }
