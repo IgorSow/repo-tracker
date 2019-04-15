@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+    
+    backend:
+        build: ./backend
+        container_name: backend
+        ports:
+            - "8085:8085"
+        networks:
+            - lan
+  #      volumes:      
+ #       - ./backend/target:/home/allegro/backend/
+        command: java -jar Allegro-Repo-1.jar
+  
+    
+networks:
+    lan:
