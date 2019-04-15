@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.example.igor.sowinski</groupId>
 	<artifactId>Allegro-Repo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>Allegro Repo</name>
+	<version>1</version>
+	<name>Allegro-Repo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
