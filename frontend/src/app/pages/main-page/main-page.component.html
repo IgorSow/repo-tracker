@@ -1,12 +1,23 @@
 <div id="mainBody">
-    <div id="wrapper">
-        <div id="title">Ostatnio edytowane repozytorium github allegro to : </div>
-        <div id="repoName">{{repoName}}</div>
-        <div id="author">
-            <div>Igor Sowinski</div>
-            <a href="https://github.com/IgorSow/repo-tracker">Repozytorium projektu</a>
-            <p></p>
-            <a href="http://localhost:8085/allegro-last-updated-repository">REST API APLIKACJI</a>
+    <div id="header">
+        <p>Software Engineer - Intern at</p>
+        <div id="allegro-logo"></div>
+        <div id="GIT"></div>
+        <div id="IN"></div>
+    </div>
+    <div id="body">
+        <div id="body-wrapper">
+            <div id="body-table">
+                <div>Last updated repository in Allegro Github :</div>
+                <div id="repoName">{{repoName}}</div>
+            </div>
+            <div id="button-left" (click)="goEndpoint()">Go to Endpoint</div>
+            <div id="button-right" (click)="goRepo()">Repository</div>
         </div>
     </div>
+    <div id="bottom">
+        <div>Igor Sowinski</div>
+    </div>
 </div>
+
+

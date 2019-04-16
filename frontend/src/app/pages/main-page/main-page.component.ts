@@ -8,7 +8,7 @@ import {RepoInfService} from '../../repository/repo-inf.service';
 })
 export class MainPageComponent implements OnInit {
 
-    public repoName: string;
+    public repoName = 'Loading ....';
 
     constructor(private repo: RepoInfService) {
     }
@@ -22,4 +22,11 @@ export class MainPageComponent implements OnInit {
         repo.then(value => this.repoName = value.nameRepository);
     }
 
+    goEndpoint() {
+        window.open( 'https://github.com/IgorSow/repo-tracker' , "_blank");
+    }
+
+    goRepo() {
+        window.open('http://localhost:8085/allegro-last-updated-repository', "_blank");
+    }
 }

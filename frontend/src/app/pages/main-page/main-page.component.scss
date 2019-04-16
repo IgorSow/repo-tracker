@@ -1,27 +1,118 @@
 
 #mainBody {
-  height: 450px;
-  width: 450px;
-
-  #wrapper {
-    height: 450px;
-    width: 150px;
-    margin: auto;
-    #title {
-
-      width: 150px;
-      height: 150px;
-      background-color: red;
+  width: 100%;
+  height: 100%;
+  #header {
+    font-family: Puritan;
+    width: 100%;
+    height: 20%;
+    font-size: 24px;
+    padding: 70px 10% 20px 10%;
+    box-sizing: border-box;
+    p {
+      display: inline-block;
+      float: left;
     }
-    #repoName {
-      width: 150px;
-      height: 150px;
-      background-color: yellow;
+    #allegro-logo {
+      float: left;
+      margin-top: 26px;
+      margin-left: 7px;
+      display: inline-block;
+      width: 78px;
+      height: 26px;
+      background-image: url("src/assets/allegro.png");
     }
-    #author {
-      width: 150px;
-      height: 150px;
-      background-color: purple;
+
+    #GIT, #IN{
+      height: 25px;
+      width: 25px;
+      float: right;
+      margin: 20px 10px 0px;
+      cursor: pointer;
+    }
+
+    #GIT{
+      background-image: url("src/assets/GIT.svg");
+    }
+
+    #IN{
+      background-image: url("src/assets/IN.svg");
+    }
+
+  }
+  #body {
+    width: 100%;
+    height: calc( 80% - 40px);
+    display: flex;
+
+    #body-wrapper {
+      width: 800px;
+      margin: 40px auto;
+
+      #body-table {
+        width: 100%;
+        height: 200px;
+        float: left;
+        box-sizing: border-box;
+        padding: 30px;
+        font-size: 36px;
+        justify-content: center;
+        text-align: center;
+        background: rgba(208, 208, 208, 0.9);
+        font-family: Puritan;
+
+        #repoName {
+          padding: 30px;
+          text-transform: uppercase;
+          color: #FE5B01;
+        }
+
+      }
+
+      #button-left {
+        cursor: pointer;
+        color: white;
+        line-height: 47px;
+        border-radius: 10px;
+        margin: 35px 20px 10px 60px;
+        float: left;
+        width: calc(50% - 80px);
+        height: 47px;
+        background-color: #FE5B01;
+        font-family: Puritan;
+        text-align: center;
+        font-size: 24px;
+
+      }
+      #button-right {
+        cursor: pointer;
+        color: white;
+        line-height: 47px;
+        margin: 35px 60px 10px 20px;
+        width: calc(50% - 80px);
+        border-radius: 10px;
+        float: left;
+        height: 47px;
+        background: #393939;
+        font-family: Puritan;
+        text-align: center;
+        font-size: 24px;
+      }
     }
   }
+  #bottom {
+    width: 100%;
+    height: 40px ;
+    color: white;
+    font-family: Puritan;
+    text-align: center;
+    font-size: 24px;
+    float: left;
+  }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+
