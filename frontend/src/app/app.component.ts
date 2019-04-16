@@ -7,9 +7,6 @@ import {RepoInfService} from './repository/repo-inf.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    // title = 'frontend';
-
-
     constructor(private repo: RepoInfService) {
 
     }

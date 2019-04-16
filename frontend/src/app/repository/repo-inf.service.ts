@@ -12,8 +12,8 @@ export class RepoInfService {
 
     constructor(http: HttpClient) {
         this.http = http;
-        // this.host = 'http://51.38.133.76:8085/allegro-last-updated-repository';
-        this.host = 'http://localhost:8085/allegro-last-updated-repository';
+        this.host = 'http://51.38.128.202:8085/allegro-last-updated-repository';
+        // this.host = 'http://localhost:8085/allegro-last-updated-repository';
         // this.host = 'http://192:168.99.100:8085/allegro-last-updated-repository';
         this.headers = this.getHeaders();
     }

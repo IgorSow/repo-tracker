@@ -23,10 +23,18 @@ export class MainPageComponent implements OnInit {
     }
 
     goEndpoint() {
-        window.open( 'https://github.com/IgorSow/repo-tracker' , "_blank");
+        window.open('https://github.com/IgorSow/repo-tracker', '_blank');
     }
 
     goRepo() {
-        window.open('http://localhost:8085/allegro-last-updated-repository', "_blank");
+        window.open('http://51.38.128.202:8085/allegro-last-updated-repository', '_blank');
+    }
+
+    goLinkedIn() {
+        window.open('https://www.linkedin.com/in/igor-sowi%C5%84ski-379572153/', '_blank');
+    }
+
+    goGit() {
+        window.open('https://github.com/EatMeAll/EatMeAll', '_blank');
     }
 }
