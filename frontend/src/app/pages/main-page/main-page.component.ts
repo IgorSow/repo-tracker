@@ -23,11 +23,11 @@ export class MainPageComponent implements OnInit {
     }
 
     goEndpoint() {
-        window.open('https://github.com/IgorSow/repo-tracker', '_blank');
+        window.open('http://51.38.128.202:8085/allegro-last-updated-repository', '_blank');
     }
 
     goRepo() {
-        window.open('http://51.38.128.202:8085/allegro-last-updated-repository', '_blank');
+        window.open('https://github.com/IgorSow/repo-tracker', '_blank');
     }
 
     goLinkedIn() {
